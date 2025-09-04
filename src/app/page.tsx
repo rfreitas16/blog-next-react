@@ -1,10 +1,11 @@
 import { Header } from "@/components/Header";
+import { SpinsLoader } from "@/components/SpinLoader";
 
 export default async function Home() {
-  console.log('home')
+
   return (
     <div>
-      <Header></Header>
+      <SpinsLoader containerClasses="min-h-[500px]"></SpinsLoader>
     </div>
   );
 }

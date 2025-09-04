@@ -1,5 +1,5 @@
 import { PostModel } from '@/models/post/post-model';
-import { PostRepository } from './post-repositorie';
+import { PostRepository } from './post-repository';
 import { resolve } from 'path';
 import { readFile } from 'fs/promises';
 
@@ -32,11 +32,11 @@ export class JsonPostRepository implements PostRepository {
     return post;
   }
 }
-export const postRepository = new JsonPostRepository();
 
-(async () => {
-  const posts = await postRepository.findAll();
-  posts.forEach(posts =>{
-    console.log(posts.id);
-  })
-})();
+
+// (async () => {
+//   const posts = await postRepository.findAll();
+//   posts.forEach(posts =>{
+//     console.log(posts.id);
+//   })
+// })();

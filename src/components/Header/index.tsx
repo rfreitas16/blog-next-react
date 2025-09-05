@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 
 export function Header() {
   return (
@@ -13,7 +14,7 @@ export function Header() {
       >
         Ola mundo
       </h1>
-      <a href='#'>the blog</a>
+      <Link href='#'>the blog</Link>
     </header>
   );
 }

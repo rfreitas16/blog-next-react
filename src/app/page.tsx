@@ -1,11 +1,15 @@
-import { Header } from "@/components/Header";
+import { PostsList } from "@/components/PostList";
 import { SpinsLoader } from "@/components/SpinLoader";
+import { Suspense } from "react";
 
-export default async function Home() {
+
+export default async function HomePage() {
 
   return (
-    <div>
-      <SpinsLoader containerClasses="min-h-[500px]"></SpinsLoader>
-    </div>
+    <Suspense fallback={<SpinsLoader />}>
+      <PostsList/>
+
+    </Suspense>
+
   );
 }

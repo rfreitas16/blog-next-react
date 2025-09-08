@@ -1,10 +1,12 @@
+
+import { findAllPublicPosts } from '@/lib/post/queries';
 import { PostCoverImage } from '../PostCoverImage';
-import { PostHeading } from '../PostHeading';
 import { PostSummary } from '../PostSummary';
 
-export function PostFeatured() {
-  const slug = 'qualquer';
-  const postLink = `/post/${slug}`;
+export async function PostFeatured() {
+  const posts = await findAllPublicPosts();
+  const post = posts[0];
+  const postLink = `/post/${post.slug}`;
   return (
     <section
       className='grid grid-cols-1 gap-8 mb-16
@@ -17,17 +19,17 @@ export function PostFeatured() {
         imageProps={{
           width: 1200,
           height: 720,
-          src: '/images/bryen_9.png',
-          alt: 'alt da imagem',
+          src: post.coverImageUrl,
+          alt: post.title,
           priority: true,
         }}
       />
       <PostSummary
         postLink={postLink}
         postHeading='h1'
-        createdAt={'2223'}
-        excerpt={'nest'}
-        title={'sada'}
+        createdAt={post.createdAt}
+        excerpt={post.excerpt}
+        title={post.title}
       />
     </section>
   );

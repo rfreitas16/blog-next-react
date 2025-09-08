@@ -12,9 +12,8 @@ export function Header() {
           'lg:text-7xl/normal lg:py-12',
         )}
       >
-        Ola mundo
+      <Link href='/'>The blog</Link>
       </h1>
-      <Link href='#'>the blog</Link>
     </header>
   );
 }

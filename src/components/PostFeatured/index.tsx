@@ -1,5 +1,6 @@
-import { PostCoverImage } from "../PostCoverImage";
-import { PostHeading } from "../PostHeading";
+import { PostCoverImage } from '../PostCoverImage';
+import { PostHeading } from '../PostHeading';
+import { PostSummary } from '../PostSummary';
 
 export function PostFeatured() {
   const slug = 'qualquer';
@@ -21,21 +22,13 @@ export function PostFeatured() {
           priority: true,
         }}
       />
-
-      <div className='flex flex-col gap-4 sm:justify-center'>
-        <time className='text-slate-600 text-sm/tight' dateTime='2025-04-20'>
-          20/04/2025 10:00
-        </time>
-        <PostHeading as='h1' url={postLink}>
-          em ipsum dolor si
-        </PostHeading>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-          fugiat esse molestias, similique voluptatibus necessitatibus
-          exercitationem dolore officia culpa debitis atque omnis, id pariatur
-          qui blanditiis cum quis quibusdam eligendi!
-        </p>
-      </div>
+      <PostSummary
+        postLink={postLink}
+        postHeading='h1'
+        createdAt={'2223'}
+        excerpt={'nest'}
+        title={'sada'}
+      />
     </section>
   );
 }

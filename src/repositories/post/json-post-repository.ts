@@ -29,22 +29,24 @@ export class JsonPostRepository implements PostRepository {
   async findAllPublic(): Promise<PostModel[]> {
     await this.simulateWait();
     const posts = await this.readFromDisk();
-    return posts.filter(post=> post.published);
+    return posts.filter(post => post.published);
   }
   async findById(id: string): Promise<PostModel> {
     await this.simulateWait();
     const posts = await this.findAllPublic();
     const post = posts.find(post => post.id === id);
 
-    if (!post) throw new Error('post nao encontrado');
+    if (!post) throw new Error('post nao encontrado para id');
+
+    return post;
+  }
+  async findBySlug(slug: string): Promise<PostModel> {
+    await this.simulateWait();
+    const posts = await this.findAllPublic();
+    const post = posts.find(post => post.slug === slug);
+
+    if (!post) throw new Error('post nao encontrado para slug');
 
     return post;
   }
 }
-
-// (async () => {
-//   const posts = await postRepository.findAll();
-//   posts.forEach(posts =>{
-//     console.log(posts.id);
-//   })
-// })();

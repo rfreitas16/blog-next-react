@@ -4,7 +4,7 @@ import Link from 'next/link';
 type PostHeadingProps = {
   children: React.ReactNode;
   url: string;
-  as: 'h1' | 'h2';
+  as?: 'h1' | 'h2';
 };
 
 export function PostHeading({

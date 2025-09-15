@@ -1,6 +1,6 @@
 import { SinglePost } from '@/components/SinglePost';
 import { SpinsLoader } from '@/components/SpinLoader';
-import { findPostBySlugCached } from '@/lib/post/queries';
+import { findPulicPostBySlugCached } from '@/lib/post/queries/public';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
@@ -14,7 +14,7 @@ export async function generateMetadata({
   params,
 }: PostSlugPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await findPostBySlugCached(slug);
+  const post = await findPulicPostBySlugCached(slug);
   return {
     title: post.title,
     description: post.excerpt,

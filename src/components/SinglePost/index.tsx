@@ -1,4 +1,4 @@
-import { findPostBySlugCached } from '@/lib/post/queries';
+import { findPulicPostBySlugCached } from '@/lib/post/queries/public';
 import Image from 'next/image';
 import { PostDate } from '../PostDate';
 import { SafeMarkdown } from '../SafeMarkdown';
@@ -9,7 +9,7 @@ type SinglePostProps = {
 };
 
 export async function SinglePost({ slug }: SinglePostProps) {
-  const post = await findPostBySlugCached(slug);
+  const post = await findPulicPostBySlugCached(slug);
   return (
     <article className='mb-16'>
       <header className='flex flex-col gap-4 mb-4'>

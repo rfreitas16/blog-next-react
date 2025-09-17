@@ -15,13 +15,15 @@ export function DeletePostButton({ id, title }: DeletePostButtonProps) {
   const [showDialog, setShowDialog] = useState(false);
   function handleClick() {
     setShowDialog(true);
-
   }
-  function handleConfirm(){
+  function handleConfirm() {
     startTransition(async () => {
       const result = await deletePostAction(id);
-      alert(`o result é: ${result}`);
       setShowDialog(false);
+
+      if (result.error) {
+        alert(`Erro: ${result.error}`);
+      }
     });
   }
   return (
@@ -45,7 +47,7 @@ export function DeletePostButton({ id, title }: DeletePostButtonProps) {
           isVisible={showDialog}
           title='Apagar post?'
           content={`Tem certeza que deseja apagar o ${title}`}
-          onCancel={()=> setShowDialog(false)}
+          onCancel={() => setShowDialog(false)}
           onConfirm={handleConfirm}
           disabled={isPending}
         />

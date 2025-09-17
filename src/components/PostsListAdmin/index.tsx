@@ -1,4 +1,3 @@
-import { deletePostAction } from '@/actions/post/delete-post-action';
 import { findAllPostsAdmin } from '@/lib/post/queries/admin';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -26,10 +25,11 @@ export default async function PostsListAdmin() {
                 (Nao publicado)
               </span>
             )}
-              <DeletePostButton id={post.id} title={post.title}/>
+            <DeletePostButton id={post.id} title={post.title} />
           </div>
         );
       })}
+
     </div>
   );
 }

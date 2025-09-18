@@ -40,7 +40,7 @@ export function Dialog({
           'bg-slate-100 p-6 rounded-lg max-w-2xl mx-6',
           'flex flex-col gap-6',
           'shadow-lg shadow-black/30 text-center',
-          'text-black'
+          'text-black',
         )}
         role='dialog'
         aria-modal={true}

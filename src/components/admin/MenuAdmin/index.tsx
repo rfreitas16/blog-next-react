@@ -1,6 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import { CircleXIcon, FileTextIcon, HouseIcon, MenuIcon } from 'lucide-react';
+import { CircleXIcon, FileTextIcon, HouseIcon, MenuIcon, PlusIcon } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -62,6 +62,9 @@ export function MenuAdmin() {
       </a>
       <Link className={linkClasses} href='/admin/post'>
         <FileTextIcon></FileTextIcon>Posts
+      </Link>
+            <Link className={linkClasses} href='/admin/post/new'>
+        <PlusIcon></PlusIcon>Criar post
       </Link>
     </nav>
   );

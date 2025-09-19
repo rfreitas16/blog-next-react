@@ -1,32 +1,19 @@
-import { Button } from '@/components/Button';
-import { BugIcon } from 'lucide-react';
+import { InputText } from '@/components/InputText/InputText';
 
 export const dynamic = 'force-dynamic';
 export default async function AdminPostNewPage() {
   return (
-    <div>
-      <div className='py-16 flex gap-4 flex-wrap items-center'>
-        <Button variant='default' size='sm'>
-          <BugIcon></BugIcon>Confirma
-        </Button>
-        <Button variant='ghost' size='md'>
-          <BugIcon></BugIcon>Confirma
-        </Button>
-        <Button variant='danger' size='lg'>
-          <BugIcon></BugIcon>Confirma
-        </Button>
-      </div>
-      <div className='py-16 flex gap-4 flex-wrap items-center'>
-        <Button variant='default' size='sm' disabled>
-          <BugIcon></BugIcon>Confirma
-        </Button>
-        <Button variant='ghost' size='md' disabled>
-          <BugIcon></BugIcon>Confirma
-        </Button>
-        <Button variant='danger' size='lg' disabled>
-          <BugIcon></BugIcon>Confirma
-        </Button>
-      </div>
+    <div className='flex flex-col gap-6'>
+      <InputText labelText='nome' placeholder='Digite seu nome' />
+
+      <InputText labelText='sobrenome' placeholder='Digite seu sobrenome' />
+      <InputText
+        disabled
+        labelText='sobrenome'
+        placeholder='Digite seu sobrenome'
+      />
+      <InputText disabled labelText='destivado' placeholder='desativado' />
+      <InputText readOnly labelText='readonly' placeholder='readonly' />
     </div>
   );
 }

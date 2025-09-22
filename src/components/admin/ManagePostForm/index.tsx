@@ -11,31 +11,72 @@ export function ManagePostForm() {
   return (
     <form action='' className='mb-16'>
       <div className='flex flex-col gap-6'>
-
-        <ImageUploader />
-        <InputText labelText='nome' placeholder='Digite seu nome' />
-
-        <InputText labelText='sobrenome' placeholder='Digite seu sobrenome' />
         <InputText
-          disabled
-          labelText='sobrenome'
-          placeholder='Digite seu sobrenome'
+          labelText='ID'
+          name='id'
+          placeholder='ID gerado automaticamente'
+          type='text'
+          readOnly
+          defaultValue={''}
         />
-        <InputText disabled labelText='destivado' placeholder='desativado' />
-        <InputText readOnly labelText='readonly' placeholder='readonly' />
-        <InputCheckbox labelText='Publicado'></InputCheckbox>
+
+        <InputText
+          labelText='Slug'
+          name='slug'
+          placeholder='Slug gerado automaticamente'
+          type='text'
+          readOnly
+          defaultValue={''}
+        />
+        <InputText
+          labelText='Autor'
+          name='author'
+          placeholder='digite o nome do autor'
+          type='text'
+          readOnly
+          defaultValue={''}
+        />
+
+        <InputText
+          labelText='Titulo'
+          name='title'
+          placeholder='Digite o titulo'
+          type='text'
+          defaultValue={''}
+        />
+        <InputText
+          labelText='Excerto'
+          name='excerpt'
+          placeholder='Digite o resumo'
+          type='text'
+          defaultValue={''}
+        />
+        <MarkdownEditor
+          labelText='Conteudo'
+          disabled={false}
+          textAreaName='content'
+          value={contentValue}
+          setValue={setContentValue}
+        ></MarkdownEditor>
+        <ImageUploader />
+        <InputText
+          labelText='URL  da sua imagem de capa'
+          name='coverImageUrl'
+          placeholder='Digite o URL da imagem'
+          type='text'
+          defaultValue={''}
+        />
+
+        <InputCheckbox
+          name='published'
+          type='checkbox'
+          labelText='Publicar?'
+        ></InputCheckbox>
 
         <div className='mt-4'>
           <Button type='submit'>Enviar</Button>
         </div>
       </div>
-      <MarkdownEditor
-        labelText='conteudo'
-        disabled={false}
-        textAreaName='content'
-        value={contentValue}
-        setValue={setContentValue}
-      ></MarkdownEditor>
     </form>
   );
 }

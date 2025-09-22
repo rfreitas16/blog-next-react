@@ -1,6 +1,5 @@
 import PostsListAdmin from '@/components/admin/PostsListAdmin';
 import { SpinsLoader } from '@/components/SpinLoader';
-import { findAllPostsAdmin } from '@/lib/post/queries/admin';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 

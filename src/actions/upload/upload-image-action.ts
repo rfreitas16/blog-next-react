@@ -1,7 +1,13 @@
 'use server';
 
-import { IMAGE_UPLOAD_MAX_SIZE } from '@/lib/constants';
+import {
+  IMAGE_SERVER_URL,
+  IMAGE_UPLOAD_DIRECTORY,
+  IMAGE_UPLOAD_MAX_SIZE,
+} from '@/lib/constants';
 import { logColor } from '@/utils/log-color';
+import { mkdir, writeFile } from 'fs/promises';
+import { extname, resolve } from 'path';
 
 type UploadImageActionResult = {
   url: string;
@@ -24,9 +30,25 @@ export async function uploadImageAction(
   if (file.size > IMAGE_UPLOAD_MAX_SIZE) {
     return makeResult({ error: 'arquivo muito grande' });
   }
-  if(!file.type.startsWith('image/')){
-    return makeResult({error: 'Imagem invalida'})
+  if (!file.type.startsWith('image/')) {
+    return makeResult({ error: 'Imagem invalida' });
   }
+  const ImageExtension = extname(file.name);
+  const uniqueImageName = `${Date.now()}${ImageExtension}`;
+  const uploadFullPath = resolve(
+    process.cwd(),
+    'public',
+    IMAGE_UPLOAD_DIRECTORY,
+  );
+  await mkdir(uploadFullPath, { recursive: true });
 
-  return makeResult({ url: 'URL' });
+  const fileArrayBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(fileArrayBuffer);
+  const fileFullPath = resolve(uploadFullPath, uniqueImageName);
+  await writeFile(fileFullPath, buffer);
+
+  const url = `${IMAGE_SERVER_URL}/${uniqueImageName}`;
+  console.log(fileFullPath);
+
+  return makeResult({ url });
 }

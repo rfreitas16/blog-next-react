@@ -15,13 +15,11 @@ export const metadata: Metadata = {
 };
 type RootLayoutProps = {
   children: React.ReactNode;
-}
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<RootLayoutProps>) {
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
-    <html lang='en' className='dark'>
+    <html lang='en' className=''>
       <body>
         <Container>
           <Header />

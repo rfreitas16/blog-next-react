@@ -7,6 +7,7 @@ import { useActionState, useEffect, useState } from 'react';
 import { ImageUploader } from '../ImageUploader';
 import { makePartialPublicPost, PublicPost } from '@/dto/post/dto';
 import { createPostAction } from '@/actions/post/create-post-action';
+import { toast } from 'react-toastify';
 
 type ManagePostFOrmProps = {
   publicPost?: PublicPost;
@@ -15,14 +16,21 @@ type ManagePostFOrmProps = {
 export function ManagePostForm({ publicPost }: ManagePostFOrmProps) {
   const initialState = {
     formState: makePartialPublicPost(publicPost),
-    errors:[],
-  }
-  const [state, action, isPending] = useActionState(createPostAction, initialState);
+    errors: [],
+  };
+  const [state, action, isPending] = useActionState(
+    createPostAction,
+    initialState,
+  );
+  useEffect(() => {
+    if (state.errors.length > 0) {
+      toast.dismiss();
+      state.errors.forEach(error => toast.error(error));
+    }
+  }, [state.errors]);
 
-  const {formState} = state;
+  const { formState } = state;
   const [contentValue, setContentValue] = useState(publicPost?.content || '');
-
-
 
   return (
     <form action={action} className='mb-16'>
@@ -49,7 +57,6 @@ export function ManagePostForm({ publicPost }: ManagePostFOrmProps) {
           name='author'
           placeholder='digite o nome do autor'
           type='text'
-          readOnly
           defaultValue={formState.author}
         />
 

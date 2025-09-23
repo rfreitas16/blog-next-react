@@ -1,9 +1,8 @@
 'use server';
 
-import { drizzleDb } from '@/db/drizzle';
-import { postsTable } from '@/db/drizzle/schemas';
 import { makePartialPublicPost, PublicPost } from '@/dto/post/dto';
 import { PostCreateSchema } from '@/lib/validations';
+import { PostModel } from '@/models/post/post-model';
 import { postRepository } from '@/repositories/post';
 import { getZodErrorMessages } from '@/utils/get-zod-error-messages';
 import { makeSlugFromText } from '@/utils/make-slug-from-text';
@@ -11,7 +10,7 @@ import { revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { v4 as uuidv4 } from 'uuid';
-import { unknown } from 'zod';
+
 
 type CreatePostActionState = {
   formState: PublicPost;

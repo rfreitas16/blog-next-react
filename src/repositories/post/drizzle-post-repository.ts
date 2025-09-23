@@ -4,6 +4,8 @@ import { drizzleDb } from '@/db/drizzle';
 import { logColor } from '@/utils/log-color';
 import { asyncDelay } from '@/utils/async-delay';
 import { SIMULATE_WAIT_IN_MS } from '@/lib/constants';
+import { eq } from 'drizzle-orm';
+import { postsTable } from '@/db/drizzle/schemas';
 
 export class DrizzlePostRepository implements PostRepository {
   async findAllPublic(): Promise<PostModel[]> {

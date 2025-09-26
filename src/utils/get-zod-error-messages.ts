@@ -8,3 +8,11 @@ export function getZodErrorMessages<T>(error: ZodError<T>): string[] {
     })
     .flat()
     .filter(Boolean);
+}
+
+// aula194
+//  import { ZodError } from 'zod';
+
+// export function getZodErrorMessages(error: ZodError): string[] {
+//   return error.issues.map(issue => issue.message);
+// }

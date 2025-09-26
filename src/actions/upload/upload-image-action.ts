@@ -5,7 +5,7 @@ import {
   IMAGE_UPLOAD_DIRECTORY,
   IMAGE_UPLOAD_MAX_SIZE,
 } from '@/lib/constants';
-import { logColor } from '@/utils/log-color';
+
 import { mkdir, writeFile } from 'fs/promises';
 import { extname, resolve } from 'path';
 
@@ -17,7 +17,7 @@ type UploadImageActionResult = {
 export async function uploadImageAction(
   formData: FormData,
 ): Promise<UploadImageActionResult> {
-  logColor('ola da action uploadImage');
+
   const makeResult = ({ url = '', error = '' }) => ({ url, error });
 
   if (!(formData instanceof FormData)) {
@@ -48,7 +48,6 @@ export async function uploadImageAction(
   await writeFile(fileFullPath, buffer);
 
   const url = `${IMAGE_SERVER_URL}/${uniqueImageName}`;
-  console.log(fileFullPath);
 
   return makeResult({ url });
 }

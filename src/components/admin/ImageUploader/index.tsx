@@ -60,7 +60,7 @@ export function ImageUploader({ disabled = false }: ImageUploaderProps) {
       setImgUrl(result.url);
       toast.success('imagem enviada');
     });
-    console.log(formData);
+
     fileInput.value = '';
   }
 

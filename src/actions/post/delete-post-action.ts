@@ -1,9 +1,16 @@
 'use server';
 
+import { verifyLoginSession } from '@/lib/login/manage-login';
 import { postRepository } from '@/repositories/post';
 
-
 export async function deletePostAction(id: string) {
+  const isAuthenticated = await verifyLoginSession();
+  if (!isAuthenticated) {
+    return {
+      error: 'Faca login novamente em outra aba',
+    };
+  }
+
   if (!id || typeof id !== 'string') {
     return {
       error: 'Dados invalidos',

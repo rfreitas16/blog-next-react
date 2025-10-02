@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
 
   if (!isAuthenticated) {
     const loginUrl = new URL('/admin/login', request.url);
-    return NextResponse.next(loginUrl);
+    return NextResponse.redirect(loginUrl);
   }
 
   return NextResponse.next();

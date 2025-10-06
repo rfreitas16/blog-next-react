@@ -14,7 +14,7 @@ export async function loginAction(state: LoginActionState, formData: FormData) {
   if (!allowLogin) {
     return {
       username: '',
-      erro: 'Login allowed',
+      error: 'Login allowed',
     };
   }
   await asyncDelay(5000); // Vou manter

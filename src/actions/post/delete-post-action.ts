@@ -19,6 +19,7 @@ export async function deletePostAction(id: string) {
 
   let post;
   try {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     post = await postRepository.delete(id);
   } catch (e: unknown) {
     if (e instanceof Error) {
